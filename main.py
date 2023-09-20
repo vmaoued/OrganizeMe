@@ -2,6 +2,13 @@ from database import display_entries
 from file_organizer import organize_files
 
 if __name__ == "__main__":
+    '''
+    Need to add: 
+        - allow for user input for keyword mappings (perhaps one day automatic detection)
+        - allow user to search database 
+        - detect differences other than filename? (type)
+        - how to detect start with integer? ie 01-BinarySearch 02-HeapSort => Lecture Folder
+    '''
     root_folder = input("Enter root folder (e.g., Math 241): ")
     keyword_mapping = {
         'Lectures': ['week'],

@@ -14,7 +14,7 @@ class CourseInfo(Base):
     id = Column(Integer, primary_key=True)
     course_name = Column(String, nullable=False)
     folder = Column(String, nullable=False)
-    files = Column(String, nullable=False)
+    file = Column(String, nullable=False)
 
 Base.metadata.create_all(engine)
 
