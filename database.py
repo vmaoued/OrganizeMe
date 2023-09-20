@@ -8,11 +8,11 @@ metadata = MetaData()
 
 Base = declarative_base()
 
-class CourseInfo(Base):
-    __tablename__ = 'courseinfo'
+class FileInfo(Base):
+    __tablename__ = 'organize_me'
 
     id = Column(Integer, primary_key=True)
-    course_name = Column(String, nullable=False)
+    root_name = Column(String, nullable=False)
     folder = Column(String, nullable=False)
     file = Column(String, nullable=False)
 
@@ -22,14 +22,14 @@ Session = sessionmaker(bind=engine)
 
 def add_entry_to_db(root_folder, folder_name, filename):
     session = Session()
-    entry = CourseInfo(course_name=root_folder, folder=folder_name, file=filename)
+    entry = FileInfo(root_name=root_folder, folder=folder_name, file=filename)
     session.add(entry)
     session.commit()
     session.close()
 
 def display_entries():
     session = Session()
-    entries = session.query(CourseInfo).all()
+    entries = session.query(FileInfo).all()
     for entry in entries:
-        print(f"Course: {entry.course_name}, Folder: {entry.folder}, File: {entry.files}")
+        print(f"Course: {entry.root_name}, Folder: {entry.folder}, File: {entry.file}")
     session.close()
