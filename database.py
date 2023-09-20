@@ -22,7 +22,7 @@ Session = sessionmaker(bind=engine)
 
 def add_entry_to_db(root_folder, folder_name, filename):
     session = Session()
-    entry = CourseInfo(course_name=root_folder, folder=folder_name, files=filename)
+    entry = CourseInfo(course_name=root_folder, folder=folder_name, file=filename)
     session.add(entry)
     session.commit()
     session.close()

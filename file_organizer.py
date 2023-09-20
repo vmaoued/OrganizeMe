@@ -8,8 +8,14 @@ Input: root_folder, keyword_mapping
 Output: None
 '''
 def organize_files(root_folder, keyword_mapping):
-    all_files = set([f for f in os.listdir(root_folder) 
-                     if not f.endswith(':Zone.Identifier')]) # dont include extra Zone Identifiers in final folder
+
+    all_files = set(os.listdir(root_folder))
+    # all_files = {f for f in all_entries 
+    #              if os.path.isfile(os.path.join(root_folder, f)) 
+    #              and not f.endswith(':Zone.Identifier')}
+    
+    # all_files = set([f for f in os.listdir(root_folder) 
+    #                  if not f.endswith(':Zone.Identifier')]) # dont include extra Zone Identifiers in final folder
 
     for filename in all_files.copy():
         matched = False
