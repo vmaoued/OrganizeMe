@@ -1,3 +1,8 @@
+# keyword_mapping = {
+#     'Lectures': ['week'],
+#     'Exercises': ['exer'],
+#     'Practice Tests': ['practice', 'test'],
+# }
 
 def get_keyword_mapping():
     print("Next, indicate the folder names (followed by its respective identifying keyword(s)) you wish to have you files organized into.")

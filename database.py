@@ -33,3 +33,25 @@ def display_entries():
     for entry in entries:
         print(f"Course: {entry.root_name}, Folder: {entry.folder}, File: {entry.file}")
     session.close()
+
+def search_entries(keyword):
+    session = Session()
+
+    keywords = [k.strip() for k in keyword.split(",")]
+    query = session.query(FileInfo)
+
+    for keyword in keywords:
+        query = query.filter(
+            (FileInfo.root_name.ilike(f"%{keyword}%")) |
+            (FileInfo.folder.ilike(f"%{keyword}%"))
+        )
+
+    entries = query.all()
+
+    if len(entries) == 0:
+        print("No data found with your keywords")
+    else:
+        for entry in entries:
+            print(f"Course: {entry.root_name}, Folder: {entry.folder}, File: {entry.file}")
+    
+    session.close()
